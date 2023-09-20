@@ -8,7 +8,8 @@ export default {
     extend: {
       screens : {
         'search-bar': {max: '1393px'},
-        'mob-display': {max: '729px'}
+        'mob-display': {max: '729px'},
+        'weather': {max: '1060px'}
       },
       // backgroundImage: {
       //   'clouds': "url('./images/clouds.gif')"
