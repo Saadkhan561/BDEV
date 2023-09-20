@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sidebar {
+  @apply translate-x-80;
+}
+
+.display {
+  @apply hidden;
+}
+
+.display-subitem {
+  @apply hidden;
+}
+
+.right {
+  @apply -translate-x-full  duration-1000;
+}
+
+.left-arrow {
+  @apply hidden
+}

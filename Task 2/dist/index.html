@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 2</title>
+  <link rel="stylesheet" href="output.css" />
+
+</head>
+
+<body class="font-open">
+  <div class="z-10 relative">
+    <div id="navbar" class="duration-500 bg-gray-100">
+
+      <head>
+        <div class="bg-walmart-500 p-2 flex items-center">
+          <div
+            class="flex items-center justify-center rounded-full cursor-pointer hover:bg-walmartHover-500 p-3 w-54 navbar-closed:hidden">
+            <img src="images/walmartLogo.svg" alt="" height="130" width="130" />
+          </div>
+          <div
+            class="flex text-white justify-center items-center hover:bg-walmartHover-500 rounded-full ml-2 p-3 cursor-pointer text-sm w-54 navbar-closed:hidden">
+            <img src="images/square.png" alt="" height="25" width="25" />
+            <p class="font-bold">Departments</p>
+          </div>
+          <div
+            class="ml-2 flex text-white justify-center items-center hover:bg-walmartHover-500 rounded-full cursor-pointer text-sm p-3 w-54 navbar-closed:hidden">
+            <img src="images/square.png" alt="" height="25" width="25" />
+            <p class="ml-2 font-bold">Services</p>
+          </div>
+          <!-- Navbar small screen -->
+          <div class="flex items-center navbar-open:hidden">
+            <div onclick="toggle()">
+              <img src="images/menu.png" alt="" height="25" width="25" />
+            </div>
+            <div>
+              <img src="images/walmart-icon.png" alt="" height="80" width="80" />
+            </div>
+          </div>
+          <!-- Navbar small screen -->
+          <div class="navbar-open:ml-8 w-2/4 navbar-closed:w-11/12 relative bg-white rounded-full h-12">
+            <form class="mt-2 ml-3 flex justify-between items-center rounded-full h-8">
+              <div class="w-11/12">
+                <input class="w-11/12 ml-4 text-md focus:outline-none" type="search"
+                  placeholder="Search everything at walmart online and in store" />
+              </div>
+              <button class="mr-1 p-2 bg-search-500 rounded-full">
+                <img src="images/search.png" alt="" height="20" width="20" />
+              </button>
+            </form>
+          </div>
+          <div class="w-44 navbar-closed:hidden relative ml-4">
+            <div onclick="toggleOrder()"
+              class="flex items-center p-3 rounded-full cursor-pointer hover:bg-walmartHover-500">
+              <div>
+                <img src="images/heart.png" alt="" height="20" width="20" />
+              </div>
+              <div class="text-white ml-2">
+                <p class="text-xs">Reorder</p>
+                <p class="font-bold text-sm">My Items</p>
+              </div>
+            </div>
+            <!-- Order subdiv -->
+            <div id="order-subdiv"
+              class="absolute z-10 border w-full mt-5 flex flex-col font-extralight text-sm border-b rounded-b-xl bg-white display">
+              <div class="p-1 flex ml-2">
+                <img class="mr-2" src="images/order.png" alt="" height="20" width="20" />
+                <p class="hover:underline cursor-pointer">Reorder</p>
+              </div>
+              <div class="p-1 flex ml-2">
+                <img class="mr-2" src="images/heart2.png" alt="" height="20" width="20" />
+                <p class="hover:underline cursor-pointer">Lists</p>
+              </div>
+              <div class="p-1 flex ml-2">
+                <img class="mr-2" src="images/gift.png" alt="" height="20" width="20" />
+                <p class="hover:underline cursor-pointer">Registries</p>
+              </div>
+            </div>
+            <!-- Order subdiv -->
+          </div>
+          <div class="w-44 ml-4 navbar-closed:hidden">
+            <div onclick="toggleAccount()"
+              class="flex items-center p-3 rounded-full cursor-pointer hover:bg-walmartHover-500">
+              <div>
+                <img src="images/account.png" alt="" height="20" width="20" />
+              </div>
+              <div class="text-white ml-2">
+                <p class="text-xs">Sign In</p>
+                <p class="font-bold text-sm">Account</p>
+              </div>
+            </div>
+            <!-- Account subdiv -->
+            <div id="account-subdiv"
+              class="border z-10 font-extralight text-sm flex flex-col absolute w-64 p-4 mt-5 border-b rounded-b-xl bg-white display">
+              <div class="flex justify-center mt-2 mb-4">
+                <button class="bg-walmart-500 p-2 w-52 text-white font-light rounded-full">
+                  Sign in or create account
+                </button>
+              </div>
+              <hr />
+              <div class="p-1 flex">
+                <img class="mr-4" src="images/list.png" alt="" height="25" width="25" />
+                <p class="hover:underline cursor-pointer">Purchase history</p>
+              </div>
+              <div class="p-1 flex">
+                <img class="mr-4" src="images/walmart-icon.png" alt="" height="40" width="40" />
+                <p class="hover:underline cursor-pointer">Walmart +</p>
+              </div>
+            </div>
+            <!-- Account subdiv -->
+          </div>
+          <div
+            class="ml-6 flex flex-col p-3 justify-center items-center text-xs text-white w-16 rounded-full cursor-pointer hover:bg-walmartHover-500">
+            <div>
+              <img src="images/cart.png" alt="" width="25" height="25" />
+            </div>
+            <div>$0.00</div>
+          </div>
+        </div>
+        <div class="flex justify-between items-center bg-walmart-500 mt-1">
+          <div class="flex p-1 w-800 subitem:w-4/5">
+            <div class="subitem-2-closed:w-full w-2/5 flex items-center text-white text-sm font-semibold ml-4">
+              <img class="mr-2" src="images/phone.png" alt="" height="30" width="30" />
+              <p>How do you want your items</p>
+              <img src="images/arrow.png" alt="" />
+            </div>
+            <div class="w-3/5 flex text-white text-sm font-semibold subitem-2-closed:hidden">
+              <p class="mt-2">|</p>
+              <div class="flex items-center ml-2">
+                <img class="mr-2" src="images/location.png" alt="" height="20" width="20" />
+                Sacramento, 95829
+              </div>
+              <div class="flex items-center ml-2">
+                <img class="mr-2" src="images/home.png" alt="" height="20" width="20" />Sacramento Supercenter
+              </div>
+            </div>
+            <div
+              class="w-1/5 flex items-center text-white text-sm font-semibold subitem-2-open:hidden subitem-2-no:hidden">
+              95829
+            </div>
+          </div>
+          <div class="subitems:hidden">
+            <ul class="flex items-center text-white">
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Deals
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Grocery & Essentials
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Walmart Style
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Halloween
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Bady Days
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Taligating
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Fashion
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Home
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Registry
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                ONE Debit
+              </li>
+              <li class="font-semibold text-sm ml-4 hover:cursor-pointer hover:underline">
+                Walmart +
+              </li>
+            </ul>
+          </div>
+        </div>
+      </head>
+      <!-- Ads Div -->
+      <div class="mt-8 ml-24 mr-24 ad-tags:ml-8 ad-tags:mr-8 p-2 h-auto grid grid-cols-[25%_50%_25%] gap-x-5">
+        <div class="h-auto grid grid-rows-[15%_55%_35%] gap-y-5">
+          <div class="relative">
+            <img class="rounded-2xl w-full h-full object-cover" src="images/shop1.jpeg" alt="" />
+            <div class="absolute text-white top-2 left-5 ad-tags:hidden">
+              <p class="text-2xl font-semibold">Your super host table top</p>
+              <a class="underline text-md" href="">shop dining</a>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="rounded-2xl" src="images/shop2.avif" alt="" />
+            <div class="absolute top-2 left-5 ad-tags:hidden">
+              <p class="text-2xl font-semibold">Bold moves, style grooves</p>
+              <a class="underline text-lg" href="">shop women</a>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="rounded-2xl" src="images/shop5.jpg" alt="" />
+            <div class="absolute text-white top-2 left-5 ad-tags:hidden">
+              <p class="text-2xl font-semibold">Walk where you want</p>
+              <a class="underline text-lg" href="">shop boots</a>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-rows-[40%_20%_40%] gap-y-5">
+          <div class="relative">
+            <img class="rounded-2xl w-full" src="images/shop3.jpg" alt="" />
+            <div class="absolute text-white top-2 left-5 ad-tags:hidden">
+              <p class="text-3xl font-semibold">Your style at Walmart</p>
+              <p class="text-4xl mt-2">Now Trending</p>
+              <button class="p-1 mt-4 bg-white text-black text-sm font-bold rounded-full">
+                See more
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-x-5">
+            <div class="relative">
+              <img class="rounded-2xl" src="images/shop4.avif" alt="" />
+              <div class="absolute text-white top-2 left-5 ad-tags:hidden">
+                <p class="text-2xl font-semibold">New iPhone 15 Pro</p>
+                <a class="underline text-md" href="">pre order now</a>
+              </div>
+            </div>
+            <div class="relative">
+              <img class="rounded-2xl" src="images/shop6.avif" alt="" />
+              <div class="absolute top-2 left-5 ad-tags:hidden">
+                <p class="text-2xl font-semibold">Upto 65% Off</p>
+                <a class="underline text-md" href="">shop now</a>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="rounded-2xl h-11/12 w-full" src="images/shop1.jpg" alt="" />
+            <div class="absolute text-white top-5 right-5 ad-tags:hidden">
+              <p class="text-5xl font-semibold">Enjoy the</p>
+              <p class="text-5xl font-semibold">shopping week</p>
+              <a class="mt-4 underline text-md" href="">shop now</a>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-rows-[30%_30%_40%] gap-y-5">
+          <div class="relative">
+            <img class="w-full h-full rounded-2xl" src="images/shop7.avif" alt="" />
+            <div class="absolute text-white top-2 left-5 ad-tags:hidden">
+              <p class="text-3xl font-semibold">Fits that hit</p>
+              <a class="underline text-lg" href="">shop men's</a>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="w-full h-full rounded-2xl" src="images/shop8.jpg" alt="" />
+            <div class="absolute top-2 left-5 ad-tags:hidden">
+              <p class="text-2xl font-semibold">Everything in its place</p>
+              <a class="underline text-lg" href="">shop storage</a>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="w-full h-full rounded-2xl" src="images/shop9.webp" alt="" />
+            <div class="absolute top-2 left-5 ad-tags:hidden">
+              <p class="text-3xl font-semibold">Just-right</p>
+              <p class="text-3xl font-semibold">bags</p>
+              <a class="underline text-lg" href="">shop now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ads Div -->
+      <!-- Products Div -->
+      <div class="mt-28 mr-32 ml-32 ad-tags:ml-8 ad-tags:mr-8">
+        <div class="flex justify-between">
+          <div>
+            <p class="font-bold text-xl">Flash Deals</p>
+            <p class="text-gray-500 text-sm font-medium">Upto 65% off</p>
+          </div>
+          <div class="text-sm underline cursor:pointer">View All</div>
+        </div>
+        <div class="relative flex justify-center">
+          <div class="overflow-x-hidden">
+            <!-- Card First Wrappper Div -->
+            <div id="card-wrapper-1" class="relative flex w-full mt-8 card-div-closed:hidden">
+              <!-- Card Div -->
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <!-- Card Div -->
+            </div>
+            <!-- Card First Wrappper Div -->
+            <!-- Card Second Wrappper Div -->
+            <div class="flex w-full mt-8 card-div-open:hidden">
+              <div class="flex flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Card Second Wrappper Div -->
+          </div>
+          <div class="absolute top-1/2 flex justify-between w-full card-div-closed:hidden">
+            <div onclick="moveLeft1()" class="rounded-full cursor-pointer bg-gray-50 duration-100"><img
+                src="images/left-arrow.png" alt="">
+            </div>
+            <div onclick="moveRight1()" class="rounded-full cursor-pointer bg-gray-50"><img src="images/right-arrow.png"
+                alt=""></div>
+          </div>
+        </div>
+        <div class="flex card-div-closed:flex-col justify-between mt-24">
+          <div class="w-1/2 card-div-closed:w-full">
+            <div class="flex justify-between">
+              <div>
+                <p class="font-bold text-xl">Dont forget a thing</p>
+                <p class="text-gray-500 text-sm font-medium">Canoples,BBQs,Games & more</p>
+              </div>
+              <div class="text-sm underline cursor:pointer">View All</div>
+            </div>
+            <div class="flex justify-center">
+              <div class="overflow-x-hidden">
+                <!-- Card First Wrappper Div -->
+                <div class="relative flex w-full mt-8">
+                  <!-- Card Div -->
+                  <div class="flex flex-col p-4 w-300">
+                    <div class="relative">
+                      <img src="images/p-4.jpg" alt="" />
+                      <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                        <img src="images/heart2.png" alt="" width="25" height="25" />
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                      <p class="font-semibold text-lg">$Price</p>
+                      <p class="text-gray-600 font-medium text-sm">
+                        Options from 22.39 - 41.99
+                      </p>
+                    </div>
+                    <div class="mt-2 text-gray-600">
+                      <p class="font-medium text-sm">Produt Name</p>
+                      <p class="font-medium text-sm">Description</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                        Option
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex flex-col p-4 w-300">
+                    <div class="relative">
+                      <img src="images/p-4.jpg" alt="" />
+                      <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                        <img src="images/heart2.png" alt="" width="25" height="25" />
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                      <p class="font-semibold text-lg">$Price</p>
+                      <p class="text-gray-600 font-medium text-sm">
+                        Options from 22.39 - 41.99
+                      </p>
+                    </div>
+                    <div class="mt-2 text-gray-600">
+                      <p class="font-medium text-sm">Produt Name</p>
+                      <p class="font-medium text-sm">Description</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                        Option
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex flex-col p-4 w-300">
+                    <div class="relative">
+                      <img src="images/p-4.jpg" alt="" />
+                      <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                        <img src="images/heart2.png" alt="" width="25" height="25" />
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                      <p class="font-semibold text-lg">$Price</p>
+                      <p class="text-gray-600 font-medium text-sm">
+                        Options from 22.39 - 41.99
+                      </p>
+                    </div>
+                    <div class="mt-2 text-gray-600">
+                      <p class="font-medium text-sm">Produt Name</p>
+                      <p class="font-medium text-sm">Description</p>
+                    </div>
+                    <div class="mt-4">
+                      <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                        Option
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Card Div -->
+                </div>
+                <!-- Card First Wrappper Div -->
+              </div>
+            </div>
+          </div>
+          <div class="relative card-div-closed:w-full">
+            <img class="rounded-3xl" src="images/ad_2.jpg" alt="" height="200" width="700">
+            <div class="absolute top-4 left-4 text-white">
+              <p class=" font-medium text-2xl">Get 25% on Men's Clothing</p>
+              <a class="text-sm hover:underline font-light cursor-pointer">Shop now</a>
+            </div>
+          </div>
+        </div>
+        <!-- SportsAdDiv -->
+        <div class="mt-32 grid grid-cols-[40%_30%_30%] gap-x-5">
+          <div class="relative">
+            <img class="rounded-2xl w-full h-full object-contain" src="images/sports1.jpeg" alt="" />
+            <div class="absolute text-white top-10 left-5 ad-tags:hidden">
+              <p class="text-xl font-medium">After school sports</p>
+              <p class="text-4xl font-semibold">Achieve MVP Status</p>
+              <button class="pr-4 pl-4 p-1 mt-4 bg-white text-black text-sm font-bold rounded-full">
+                Shop gear
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-rows-[50%_50%] gap-y-5">
+            <div class="relative">
+              <img class="rounded-2xl w-full h-full object-cover" src="images/sports2.jpeg" alt="" />
+              <div class="absolute text-white top-2 left-5 ad-tags:hidden">
+                <p class="text-lg font-medium">Doormats</p>
+                <p class="text-3xl font-semibold">The perfect greeting</p>
+                <a class="underline text-md" href="">shop now</a>
+              </div>
+            </div>
+            <div class="grid grid-cols-[50%_50%] gap-x-5">
+              <div class="relative">
+                <img class="rounded-2xl w-full h-full object-cover" src="images/sports3.webp" alt="" />
+                <div class="absolute text-white bottom-2 left-5 ad-tags:hidden">
+                  <p class="text-2xl font-semibold">A tidy entry way</p>
+                  <a class="underline text-md" href="">shop now</a>
+                </div>
+              </div>
+              <div class="relative">
+                <img class="rounded-2xl w-11/12 h-full object-cover" src="images/sports4.jpg" alt="" />
+                <div class="absolute  bottom-2 left-5 ad-tags:hidden">
+                  <p class="text-2xl font-semibold">Outdoors & Organized</p>
+                  <a class="underline text-md" href="">shop storage</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="rounded-3xl w-full h-full object-contain" src="images/sports5.jpeg" alt="" />
+            <div class="absolute text-white top-5 left-5 ad-tags:hidden">
+              <p class="text-lg font-medium">Supplies and more</p>
+              <p class="text-3xl font-semibold">A clean start</p>
+              <a class="underline text-md" href="">shop now</a>
+            </div>
+          </div>
+        </div>
+        <!-- SportsAdDiv -->
+        <div class="mt-16">
+          <div>
+            <p class="font-bold text-xl">More from the outdoors</p>
+          </div>
+        </div>
+        <div class="relative flex justify-center">
+          <div class="overflow-x-hidden">
+            <!-- Card First Wrappper Div -->
+            <div id="card-wrapper-2" class="relative flex w-full card-div-closed:hidden">
+              <!-- Card Div -->
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex shrink-0 flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-5.jpg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <!-- Card Div -->
+            </div>
+            <!-- Card First Wrappper Div -->
+            <!-- Card Second Wrappper Div -->
+            <div class="flex w-full mt-8 card-div-open:hidden">
+              <div class="flex flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+              <div class="flex flex-col p-4 w-300">
+                <div class="relative">
+                  <img src="images/p-1.jpeg" alt="" />
+                  <div class="absolute right-2 top-2 bg-white rounded-full p-1">
+                    <img src="images/heart2.png" alt="" width="25" height="25" />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="font-semibold text-lg">$Price</p>
+                  <p class="text-gray-600 font-medium text-sm">
+                    Options from 22.39 - 41.99
+                  </p>
+                </div>
+                <div class="mt-2 text-gray-600">
+                  <p class="font-medium text-sm">Produt Name</p>
+                  <p class="font-medium text-sm">Description</p>
+                </div>
+                <div class="mt-4">
+                  <button class="p-1 border font-semibold text-sm w-28 border-black rounded-full">
+                    Option
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Card Second Wrappper Div -->
+          </div>
+          <div class="absolute top-1/2 flex justify-between w-full card-div-closed:hidden">
+            <div onclick="moveLeft2()" class="rounded-full cursor-pointer bg-gray-50 duration-100"><img
+                src="images/left-arrow.png" alt="">
+            </div>
+            <div onclick="moveRight2()" class="rounded-full cursor-pointer bg-gray-50"><img src="images/right-arrow.png"
+                alt=""></div>
+          </div>
+        </div>
+      </div>
+      <!-- Products Div -->
+    </div>
+    <footer>
+      <div class="flex flex-col justify-center items-center bg-blue-100 footer:bg-white p-12">
+        <div class="text-md">We'd love to hear what you think</div>
+        <div class="mt-4"><button
+            class="rounded-3xl border hover:border-2 border-black p-2 pl-4 pr-4 bg-white font-semibold">Give your
+            feedback</button></div>
+      </div>
+      <hr />
+      <div class="bg-blue-600 footer:bg-white text-white footer:text-black flex flex-col justify-center footer:justify-start items-center p-4">
+        <div class="flex flex-col flex-wrap w-4/5">
+          <ul class="flex justify-around footer:flex-col text-sm font-light">
+            <a href="#">
+              <li class="shrink-0 hover:underline footer:mb-4">All Departments</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Store Directory</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Careers</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Our Company</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Sell on Walmart.com</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Help</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Covid-19 Vaccine Scheduler</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Product Retails</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Accessibility</li>
+            </a>
+          </ul>
+          <ul class="flex justify-evenly footer:flex-col text-sm font-light ">
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Tax Exempt Program</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Get the Walmart App</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Sign up for Email</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Safety Data Sheet</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Tems of Use</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Privacy and Security</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">California Supply Chain Act</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Your Privacy Choices</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Notice At Collection</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Request My Personal Information</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">Brand Shop directory</li>
+            </a>
+            <a href="#">
+              <li class="hover:underline footer:mb-4">#IYFYK</li>
+            </a>
+          </ul>
+        </div>
+        <div class="flex justify-center items-center font-extralight text-sm mt-8">
+          <p>&copy; 2023 Walmart. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- Sidebar Div -->
+  <div class="items-center absolute top-0 left-0 h-screen w-80 navbar-open:hidden">
+    <div class="flex flex-col ml-4 w-4/5 mt-12">
+      <div class="flex">
+        <img src="images/walmart-icon.png" alt="" width="50" height="50" />
+        <button class="bg-walmart-500 text-white text-sm font-medium rounded-full hover:cursor-pointer w-56">
+          Sign in or create account
+        </button>
+      </div>
+      <ul>
+        <li class="flex mt-8 mb-8 ml-2 hover:cursor-pointer">
+          <img src="images/walmart-icon.png" alt="" height="35" width="35" />Walmart +
+        </li>
+        <hr />
+        <li class="flex mt-6 mb-6 ml-2 hover:cursor-pointer">
+          <img class="mr-2" src="images/list.png" alt="" height="25" width="25" />Purchase history
+        </li>
+        <li class="flex mt-6 mb-6 ml-2 hover:cursor-pointer">
+          <img class="mr-2" src="images/order.png" alt="" height="25" width="25" />My items
+        </li>
+        <li class="flex mt-6 mb-6 ml-2 hover:cursor-pointer">
+          <img class="mr-2" src="images/account2.png" alt="" height="25" width="25" />Account
+        </li>
+        <hr />
+        <li class="flex mt-6 mb-6 ml-2 hover:cursor-pointer">
+          <img class="mr-2" src="images/help.png" alt="" height="25" width="25" />Help
+        </li>
+        <hr />
+        <li class="flex mt-6 mb-6 ml-2 hover:cursor-pointer">
+          <img class="mr-2" src="images/heart2.png" alt="" height="25" width="25" />List
+        </li>
+        <li class="flex mt-6 mb-6 ml-2 hover:cursor-pointer">
+          <img class="mr-2" src="images/gift.png" alt="" height="25" width="25" />Registries
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Sidebar Div -->
+</body>
+
+</script>
+
+<script>
+  let nav = document.getElementById("navbar");
+  function toggle() {
+    nav.classList.toggle("sidebar");
+  }
+  let order = document.getElementById("order-subdiv");
+  function toggleOrder() {
+    order.classList.toggle("display");
+  }
+  let account = document.getElementById("account-subdiv");
+  function toggleAccount() {
+    account.classList.toggle("display");
+  }
+  let subitem = document.getElementById("subitem");
+  function toggleSubitem() {
+    subitem.classList.toggle("display-subitem");
+  }
+
+  let right1 = document.getElementById("card-wrapper-1");
+  function moveRight1() {
+    right1.classList.add("right");
+  }
+  let left1 = document.getElementById("card-wrapper-1");
+  function moveLeft1() {
+    left1.classList.remove("right");
+    left1.classList.add("duration-1000")
+  }
+  let right2 = document.getElementById("card-wrapper-2");
+  function moveRight2() {
+    right2.classList.add("right");
+  }
+  let left2 = document.getElementById("card-wrapper-2");
+  function moveLeft2() {
+    left2.classList.remove("right");
+    left2.classList.add("duration-1000")
+  }
+</script>
+
+</html>
