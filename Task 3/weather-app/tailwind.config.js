@@ -11,6 +11,9 @@ export default {
         'mob-display': {max: '729px'},
         'weather': {max: '1060px'}
       },
+      height: {
+        95: '95%'
+      }
       // backgroundImage: {
       //   'clouds': "url('./images/clouds.gif')"
       // }
