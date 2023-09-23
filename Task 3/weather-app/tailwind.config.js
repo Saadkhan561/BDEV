@@ -13,10 +13,10 @@ export default {
       },
       height: {
         95: '95%'
+      },
+      fontFamily: {
+        'display': ['Mulish'] 
       }
-      // backgroundImage: {
-      //   'clouds': "url('./images/clouds.gif')"
-      // }
     },
   },
   plugins: [],

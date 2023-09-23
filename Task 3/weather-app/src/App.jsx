@@ -21,7 +21,6 @@ function App() {
   const [err, setErr] = useState();
 
   const handleImg = (type) => {
-
     if (type == 'Clouds') {
       setImg('clouds.png');
       setbgImg('cloudy.jpg');
@@ -31,7 +30,6 @@ function App() {
     } else if (type == 'Rain') {
       setImg('shower.png');
       setbgImg('rain.jpg');
-      
     } else if (type == 'Thunderstorm') {
       setImg('thunderstorm.png');
       setbgImg('storm.jpg');
@@ -41,16 +39,22 @@ function App() {
     } else if (type == 'Mist') {
       setImg('fog.png');
       setbgImg('mist.jpeg');
+    } else if (type == 'Haze') {
+      setImg('fog.png');
+      setbgImg('haze.jpg');
+    } else if (errStatus) {
+      setbgImg('error.jpg');
     }
   };
 
   const handleClick = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=Metric&appid=${key}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&cnt=5&appid=${key}`
     )
       .then((res) => res.json())
       .then((data) => {
         setErr(data.message);
+        console.log(data);
         handleImg(data.weather[0].main);
         setWeather({
           ...weather,
@@ -62,25 +66,20 @@ function App() {
           visibility: data.visibility,
           type: data.weather[0].main,
         });
-       
-     
       })
-      .catch((err) => {
-        setErrStatus(true);
-      });
   };
 
   const displayDiv = () => {
     return (
-      <div className='relative flex flex-col justify-center items-center'>
-        <p className='font-sans text-5xl font-semibold mt-8'>
+      <div className='relative flex flex-col justify-center items-center text-white'>
+        <p className='font-display text-6xl font-bold mt-8'>
           {weather && weather.name}
         </p>
         <div className='flex items-center mt-2'>
           {weather && (
-            <img src={`./images/${img}`} alt='' width={60} height={60} />
+            <img src={`./images/${img}`} alt='' width={80} height={80} />
           )}
-          <p className='text-5xl ml-4 text-blue-500'>
+          <p className='text-6xl font-bold ml-4'>
             {weather && weather.temp}&deg; C
           </p>
         </div>
@@ -88,10 +87,11 @@ function App() {
     );
   };
 
+
   const displayError = () => {
     return (
-      <div className='flex justify-items-center items-center mt-8'>
-        <p className='text-2xl font-semibold uppercase'>{err}</p>
+      <div className='relative flex justify-items-center items-center mt-8'>
+        <p className='text-6xl text-white font-semibold uppercase'>{err}</p>
       </div>
     );
   };
@@ -103,16 +103,16 @@ function App() {
         src={`./images/${bgImg}`}
         alt=''
       />
-      <div className='absolute inset-0 bg-blue-900 bg-opacity-90'></div>
+      <div className='absolute inset-0 bg-gray-900 bg-opacity-70'></div>
       {/* bg-gradient-to-r from-gray-300 to-blue-300 */}
-      <div className='relative rounded-3xl lg:w-11/12 search-bar:w-4/5 h-4/5 mob-display:h-95 flex flex-col justify-center items-center p-4 bg-gradient-to-r from-gray-300 to-blue-300'>
+      <div className='relative rounded-3xl lg:w-10/12 search-bar:w-4/5 h-4/5 mob-display:h-95 flex flex-col justify-center items-center p-4 bg-gradient-to-r from-gray-300 to-blue-300'>
         <img
           className='absolute inset-0 h-full w-full object-cover rounded-3xl'
           src={`./images/${bgImg}`}
           alt=''
         />
         <div className='absolute inset-0 bg-blue-900 bg-opacity-10'></div>
-        <div className='relative flex justify-between items-center w-11/12 rounded-full bg-white border'>
+        <div className='relative flex justify-between items-center w-7/12 mob-display:w-11/12 rounded-full bg-white border'>
           <div className='w-full p-2'>
             <input
               className='w-full ml-2 focus:outline-none'
@@ -127,8 +127,8 @@ function App() {
           </button>
         </div>
         {err ? displayError() : displayDiv()}
-        <div className='relative mt-16 mob-display:mt-8 flex justify-evenly mob-display:flex-col w-full'>
-          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between p-6  rounded-2xl'>
+        <div className='relative mt-56 mob-display:mt-8 flex justify-evenly mob-display:flex-col w-4/5 text-white'>
+          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between p-6  rounded-2xl bg-black bg-opacity-50'>
             <img src='./images/humidity.png' alt='' height={40} width={50} />
             <div className='flex flex-col items-center text-xl font-semibold ml-4'>
               <p>
@@ -137,21 +137,21 @@ function App() {
               <p>Humidity</p>
             </div>
           </div>
-          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between mob-display:mt-4 p-6  rounded-2xl'>
+          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between mob-display:mt-4 p-6  rounded-2xl bg-black bg-opacity-50'>
             <img src='./images/wind.png' alt='' height={40} width={50} />
             <div className='flex flex-col items-center text-xl font-semibold ml-4'>
               <p>{weather && weather.windSpeed} km/hr</p>
               <p>Wind Speed</p>
             </div>
           </div>
-          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between mob-display:mt-4 p-6  rounded-2xl'>
+          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between mob-display:mt-4 p-6  rounded-2xl bg-black bg-opacity-50'>
             <img src='./images/pressure.png' alt='' height={40} width={50} />
             <div className='flex flex-col items-center text-xl font-semibold ml-4'>
               <p>{weather && weather.pressure} Pa</p>
               <p>Pressure</p>
             </div>
           </div>
-          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between mob-display:mt-4 p-6  rounded-2xl'>
+          <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between mob-display:mt-4 p-6  rounded-2xl bg-black bg-opacity-50'>
             <img src='./images/visibility.png' alt='' height={40} width={50} />
             <div className='flex flex-col items-center text-xl font-semibold ml-4'>
               <p>{weather && weather.visibility} m</p>
