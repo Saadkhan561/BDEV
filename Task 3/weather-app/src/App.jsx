@@ -53,28 +53,32 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setErr(data.message);
-        console.log(data);
-        handleImg(data.weather[0].main);
-        setWeather({
-          ...weather,
-          name: data.name,
-          temp: data.main.temp,
-          humidity: data.main.humidity,
-          windSpeed: data.wind.speed,
-          pressure: data.main.pressure,
-          visibility: data.visibility,
-          type: data.weather[0].main,
-        });
-      })
+        if (data.cod == '404') {
+          console.log(data);
+          setErr(data.message);
+          setErrStatus(true);
+          setbgImg('error.jpg');
+        } else {
+          console.log(data);
+          setErrStatus(false);
+          handleImg(data.weather[0].main);
+          setWeather({
+            ...weather,
+            name: data.name,
+            temp: data.main.temp,
+            humidity: data.main.humidity,
+            windSpeed: data.wind.speed,
+            pressure: data.main.pressure,
+            visibility: data.visibility,
+            type: data.weather[0].main,
+          });
+        }
+      });
   };
 
   const displayDiv = () => {
     return (
-      <div className='relative flex flex-col justify-center items-center text-white'>
-        <p className='font-display text-6xl font-bold mt-8'>
-          {weather && weather.name}
-        </p>
+      <div className='relative flex flex-col justify-center text-white mt-4'>
         <div className='flex items-center mt-2'>
           {weather && (
             <img src={`./images/${img}`} alt='' width={80} height={80} />
@@ -83,10 +87,15 @@ function App() {
             {weather && weather.temp}&deg; C
           </p>
         </div>
+        <p className='font-display text-6xl font-bold mt-8'>
+          {weather && weather.name}
+        </p>
+        <p className='font-display text-3xl font-bold mt-4'>
+          ({weather && weather.type})
+        </p>
       </div>
     );
   };
-
 
   const displayError = () => {
     return (
@@ -126,7 +135,7 @@ function App() {
             <img src='./images/search.png' alt='' height={25} width={25} />
           </button>
         </div>
-        {err ? displayError() : displayDiv()}
+        {errStatus ? displayError() : displayDiv()}
         <div className='relative mt-56 mob-display:mt-8 flex justify-evenly mob-display:flex-col w-4/5 text-white'>
           <div className='flex mob-display:flex-row flex-col items-center shrink-0 mob-display:justify-between p-6  rounded-2xl bg-black bg-opacity-50'>
             <img src='./images/humidity.png' alt='' height={40} width={50} />
