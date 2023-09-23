@@ -36,15 +36,27 @@ function App() {
     } else if (type == 'Snow') {
       setImg('snowflake.png');
       setbgImg('snow.jpg');
-    } else if (type == 'Mist') {
+    } else if (type == 'Mist' || type == 'Smoke') {
       setImg('fog.png');
       setbgImg('mist.jpeg');
     } else if (type == 'Haze') {
       setImg('fog.png');
       setbgImg('haze.jpg');
+    } else if (type == 'Dust' || type == 'Sand') {
+      setImg('dust.png');
+      setbgImg('dust.jpg');
+    } else if (type == 'Ash') {
+      setImg('thunderstorm.png');
+      setbgImg('ash.jpg');
+    } else if (type == 'Squall') {
+      setImg('clouds.png');
+      setbgImg('cloudy.jpg');
+    } else if (type == 'Tornado') {
+      setImg('tornado.png');
+      setbgImg('tornado.jpg');
     } else if (errStatus) {
       setbgImg('error.jpg');
-    }
+    } 
   };
 
   const handleClick = () => {
@@ -58,6 +70,16 @@ function App() {
           setErr(data.message);
           setErrStatus(true);
           setbgImg('error.jpg');
+          setWeather({
+            ...weather,
+            name: '',
+            temp: 0,
+            humidity: 0,
+            windSpeed: 0,
+            pressure: 0,
+            visibility: 0,
+            type: data.weather[0].main,
+          });
         } else {
           console.log(data);
           setErrStatus(false);
@@ -100,7 +122,8 @@ function App() {
   const displayError = () => {
     return (
       <div className='relative flex justify-items-center items-center mt-8'>
-        <p className='text-6xl text-white font-semibold uppercase'>{err}</p>
+        <img src="./images/error.png" alt="" height={80} width={80}/>
+        <p className='ml-4 text-6xl text-white font-semibold uppercase'>{err}</p>
       </div>
     );
   };
