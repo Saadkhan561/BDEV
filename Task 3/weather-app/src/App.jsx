@@ -31,6 +31,7 @@ function App() {
     } else if (type == 'Rain') {
       setImg('shower.png');
       setbgImg('rain.jpg');
+      
     } else if (type == 'Thunderstorm') {
       setImg('thunderstorm.png');
       setbgImg('storm.jpg');
