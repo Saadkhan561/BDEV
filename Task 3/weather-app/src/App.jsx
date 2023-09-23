@@ -20,23 +20,24 @@ function App() {
   const [errStatus, setErrStatus] = useState(false);
   const [err, setErr] = useState();
 
-  const handleImg = () => {
-    if (weather.type == 'Clouds') {
+  const handleImg = (type) => {
+
+    if (type == 'Clouds') {
       setImg('clouds.png');
       setbgImg('cloudy.jpg');
-    } else if (weather.type == 'Clear') {
+    } else if (type == 'Clear') {
       setImg('sun.png');
       setbgImg('sky.jpg');
-    } else if (weather.type == 'Rain') {
+    } else if (type == 'Rain') {
       setImg('shower.png');
       setbgImg('rain.jpg');
-    } else if (weather.type == 'Thunderstorm') {
+    } else if (type == 'Thunderstorm') {
       setImg('thunderstorm.png');
       setbgImg('storm.jpg');
-    } else if (weather.type == 'Snow') {
+    } else if (type == 'Snow') {
       setImg('snowflake.png');
       setbgImg('snow.jpg');
-    } else if (weather.type == 'Mist') {
+    } else if (type == 'Mist') {
       setImg('fog.png');
       setbgImg('mist.jpeg');
     }
@@ -49,8 +50,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setErr(data.message);
-        console.log(data);
-        handleImg();
+        handleImg(data.weather[0].main);
         setWeather({
           ...weather,
           name: data.name,
@@ -61,6 +61,8 @@ function App() {
           visibility: data.visibility,
           type: data.weather[0].main,
         });
+       
+     
       })
       .catch((err) => {
         setErrStatus(true);
