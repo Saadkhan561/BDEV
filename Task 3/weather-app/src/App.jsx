@@ -77,8 +77,7 @@ function App() {
             humidity: 0,
             windSpeed: 0,
             pressure: 0,
-            visibility: 0,
-            type: data.weather[0].main,
+            visibility: 0
           });
         } else {
           console.log(data);
@@ -105,15 +104,15 @@ function App() {
           {weather && (
             <img src={`./images/${img}`} alt='' width={80} height={80} />
           )}
-          <p className='text-6xl font-bold ml-4'>
+          <p className='mob-display:text-3xl text-6xl font-bold ml-4'>
             {weather && weather.temp}&deg; C
           </p>
         </div>
-        <p className='font-display text-6xl font-bold mt-8'>
+        <p className='font-display mob-display:text-3xl text-6xl font-bold mt-8'>
           {weather && weather.name}
         </p>
-        <p className='font-display text-3xl font-bold mt-4'>
-          ({weather && weather.type})
+        <p className='font-display mob-display:text-xl text-3xl font-bold mt-4'>
+          {weather && weather.type}
         </p>
       </div>
     );
@@ -122,8 +121,8 @@ function App() {
   const displayError = () => {
     return (
       <div className='relative flex justify-items-center items-center mt-8'>
-        <img src="./images/error.png" alt="" height={80} width={80}/>
-        <p className='ml-4 text-6xl text-white font-semibold uppercase'>{err}</p>
+        <img src="./images/error.png" alt="" height={60} width={60}/>
+        <p className='ml-4 text-4xl mob-display:text-2xl text-white font-semibold uppercase'>{err}</p>
       </div>
     );
   };
@@ -131,12 +130,11 @@ function App() {
   return (
     <div className='flex justify-center items-center h-screen'>
       <img
-        className='absolute inset-0 h-full w-full object-cover'
+        className='absolute inset-0 h-screen w-full object-cover'
         src={`./images/${bgImg}`}
         alt=''
       />
       <div className='absolute inset-0 bg-gray-900 bg-opacity-70'></div>
-      {/* bg-gradient-to-r from-gray-300 to-blue-300 */}
       <div className='relative rounded-3xl lg:w-10/12 search-bar:w-4/5 h-4/5 mob-display:h-95 flex flex-col justify-center items-center p-4 bg-gradient-to-r from-gray-300 to-blue-300'>
         <img
           className='absolute inset-0 h-full w-full object-cover rounded-3xl'
