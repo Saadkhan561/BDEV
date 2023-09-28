@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.location-div {
+    @apply w-56 duration-1000 ease-in-out
+ }
