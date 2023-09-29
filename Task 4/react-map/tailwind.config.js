@@ -11,7 +11,8 @@ export default {
       },
       screens: {
         'med-display': {max: '1200px'},
-        'mob-display': {max: '729px'}
+        'mob-display': {max: '729px'},
+        'small-display': {max: '400px'}
       }
     },
   },
